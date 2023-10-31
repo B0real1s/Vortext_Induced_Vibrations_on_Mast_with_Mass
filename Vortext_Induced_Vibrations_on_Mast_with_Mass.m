@@ -4,7 +4,7 @@ clearvars
 %mast properties
 L_mast = 80; %(m) lentgh of mast
 stiff = 4*1e9; %(N*m^2)
-gamma = 0.0005; %(no units) γ - damping ratio
+gamma = 0.005; %(no units) γ - damping ratio
 
 %mass on top of mast properties 
 m = 5*1e3; %(Kg)
@@ -36,6 +36,19 @@ P_lv = 0.5*density*(U^2)*B*L_mass*Clv; %across-wind force
 
 omega = omega_nat; % since at U_crit --> we have hit resonance
 trans_fun = 1/(m*sqrt((((omega_nat^2)-(omega^2))^2)+((2*gamma*omega_nat*omega)^2))); %magnitude of transfwe function
+
+SSAmplitude = P_lv*trans_fun; %(m) steady state amplitude of vibrations
+
+%Now check what happens when U = 2*Ucrit
+U2 = 2*U_crit;
+
+P_lv2 = 0.5*density*(U2^2)*B*L_mass*Clv; %across-wind force 
+
+omega2 = 2*omega_nat; % since at U_crit --> we have hit resonance
+trans_fun2 = 1/(m*sqrt((((omega_nat^2)-(omega2^2))^2)+((2*gamma*omega_nat*omega2)^2))); %magnitude of transfwe function
+
+SSAmplitude2 = P_lv2*trans_fun2; %(m) steady state amplitude of vibrations
+
 
 
 
